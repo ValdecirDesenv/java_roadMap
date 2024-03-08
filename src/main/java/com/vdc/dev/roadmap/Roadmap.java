@@ -8,6 +8,7 @@ import com.vdc.dev.code.Book;
 import com.vdc.dev.enums.Calendar;
 import com.vdc.dev.multithreading.JobTask_c1;
 import com.vdc.dev.multithreading.JobTask_c2;
+import com.vdc.dev.utils.Math_op;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,7 +27,7 @@ public class Roadmap {
         callEnumSample();
         callSerialization();
         callThreadsSample();
-        
+        callonePsqrtNumber();
         
         
         System.out.println("Hello Java best neil code!");
@@ -91,11 +92,19 @@ public class Roadmap {
     }
 
     private static void callThreadsSample() {
-        JobTask_c1 td_c1 = new JobTask_c1();
+        Math_op op = new Math_op();
+        
+        JobTask_c1 td_c1 = new JobTask_c1(op, 5, 7);
+        Thread td_c2 = new Thread(new JobTask_c2(op,5, 2));
+        
         td_c1.start();
-        Thread td_c2 = new Thread(new JobTask_c2());
         td_c2.start();
         
+    }
+
+    private static void callonePsqrtNumber() {
+        Math_op op = new Math_op();
+        System.out.println("one div square some of 5 times -> 1/sqrt(4) = " + op.getSomeOnePsqrt(4,4) );
     }
 }
 
