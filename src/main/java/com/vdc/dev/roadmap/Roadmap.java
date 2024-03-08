@@ -6,6 +6,8 @@ package com.vdc.dev.roadmap;
 
 import com.vdc.dev.code.Book;
 import com.vdc.dev.enums.Calendar;
+import com.vdc.dev.multithreading.JobTask_c1;
+import com.vdc.dev.multithreading.JobTask_c2;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,7 +25,7 @@ public class Roadmap {
   
         callEnumSample();
         callSerialization();
-        
+        callThreadsSample();
         
         
         
@@ -86,6 +88,14 @@ public class Roadmap {
         }
          System.out.println("\n");
         //============================================== 
+    }
+
+    private static void callThreadsSample() {
+        JobTask_c1 td_c1 = new JobTask_c1();
+        td_c1.start();
+        Thread td_c2 = new Thread(new JobTask_c2());
+        td_c2.start();
+        
     }
 }
 
